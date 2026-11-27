@@ -1,5 +1,7 @@
 # Uma Arquitetura de Referência para Frameworks de Orquestração de Agentes de IA
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24573327.svg)](https://doi.org/10.5281/zenodo.24573327)
+
 Pacote de replicação do Trabalho de Conclusão de Curso (Monografia em Sistemas de Informação II) de **Bernardo Viggiano Campos**, Bacharelado em Sistemas de Informação, Departamento de Ciência da Computação, Universidade Federal de Minas Gerais (UFMG).
 
 Orientador: Prof. Marco Túlio Valente.
@@ -52,6 +54,27 @@ O arquivo usa codificação UTF-8 e vírgula como separador.
 
 Um registro pode ter mais de uma linha, uma por evidência de código.
 
+## Critérios de classificação
+
+**Tipo de evidência**
+
+| Valor | Critério | Exemplos |
+|---|---|---|
+| Implementação executável | Trecho com lógica executada pelo runtime (corpo de função ou método). | `Pregel.stream`, `Flow._resume_async_body`, `processHitlResponses` |
+| Contrato de API | Declaração de tipos, classes de dados, interfaces, classes base ou assinaturas que definem o que a aplicação ou outros módulos fornecem e recebem. | `Command`, `Checkpoint`, `BaseStore`, `RunContextWrapper`, `INodeExecutionData` |
+| Configuração | Parâmetro ou estrutura que regula o comportamento sem implementá-lo. | `RetryPolicy`, `ToolExecutionConfig`, `batchSize`, `onError` |
+
+**Camada**
+
+| Valor | Critério | Exemplos |
+|---|---|---|
+| Núcleo | Mecanismos de orquestração do framework: motor de execução, agentes, ferramentas, estado, aprovação, políticas e rastreamento. | `WorkflowExecute`, `StateGraph`, `Crew`, `AgentRunner` |
+| Integração de suporte | Adaptadores para protocolos ou serviços externos, implementações de backends de armazenamento e extensões opcionais. | `HttpRequestV3`, clientes MCP, `InMemorySaver`, `SQLiteSession`, `MemoryPostgresChat`, memória do sandbox |
+
+A camada "composição da aplicação", citada no texto, não aparece no arquivo: ela descreve responsabilidades que ficam com quem usa o framework (por exemplo, idempotência e autenticação do revisor), e não trechos do código dos frameworks.
+
+Resultado: 122 evidências de implementação executável, 24 de contrato de API e 4 de configuração; 138 no núcleo e 12 em integração de suporte.
+
 ## Decisões arquiteturais
 
 | Dimensão | Decisões |
@@ -68,6 +91,12 @@ Um registro pode ter mais de uma linha, uma por evidência de código.
 - A análise foi feita por um único pesquisador e não inclui a execução da aplicação comum descrita no texto.
 
 ## Como citar
+
+Pacote de replicação (este repositório):
+
+> CAMPOS, Bernardo Viggiano. *Uma Arquitetura de Referência para Frameworks de Orquestração de Agentes de IA: pacote de replicação*. Versão v1.0.0. Zenodo, 2026. DOI: [10.5281/zenodo.24573327](https://doi.org/10.5281/zenodo.24573327).
+
+Trabalho de Conclusão de Curso:
 
 > CAMPOS, Bernardo Viggiano. *Uma Arquitetura de Referência para Frameworks de Orquestração de Agentes de IA*. Trabalho de Conclusão de Curso (Bacharelado em Sistemas de Informação), Universidade Federal de Minas Gerais, Belo Horizonte, 2026.
 
